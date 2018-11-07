@@ -6,14 +6,14 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'npm --version'
+                sh 'node -v'
+                sh 'cd scripts'
+                sh 'bash ./buildSdk'
+                
                 echo '...............'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
