@@ -8,7 +8,7 @@ pipeline {
                 bat('npm --version')
                 bat('node -v')
                 bat('cd scripts')
-                // sh('bash ./buildSdk')
+                // sh('bash ./buildSdk.sh')
                 
                 echo '...............'
             }
@@ -18,10 +18,9 @@ pipeline {
                 echo 'Testing...'
                 echo env.SKIP_TESTS
                 script {
-                    if ( !env.SKIP_TESTS ) {
-                        echo("VIKIII")
+                    if ( env.SKIP_TESTS == "false" ) {
                         bat('cd scripts')
-                        // sh('bash ./unittestSdk')
+                        // sh('bash ./unittestSdk.sh')
                     } 
                 }
                 bat("git checkout \"${REVISION}\"")
